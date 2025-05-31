@@ -1,0 +1,72 @@
+[project]
+name = "shooter-backend"
+version = "0.1.0"
+description = "Backend for the Shooter game"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+ignore = ["E501", "B008", "N806"]
+fixable = ["ALL"]
+preview = true
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "tab"
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+strict_optional = true
+no_implicit_optional = true
+disallow_incomplete_defs = true
+
+
+[tool.pytest.ini_options]
+addopts = "-ra -q --tb=short --mypy --mypy-ignore-missing-imports --cov-report=term-missing --cov=backend"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.coverage.run]
+skip_empty = true
+show_missing = true
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.16.0",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+]
+
+#set mark

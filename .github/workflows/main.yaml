@@ -29,9 +29,10 @@ jobs:
       #             Backend Tests
       #============================================
       - name: Install the project part 2
-        run:  uv lock && \
-              uv sync --locked --all-extras --dev --group cpu --no-build-isolation && \
-              uv run pip install 'git+https://github.com/facebookresearch/detectron2.git'
+        run:  |
+            uv lock
+            uv sync --locked --all-extras --dev --group cpu --no-build-isolation
+            uv run pip install 'git+https://github.com/facebookresearch/detectron2.git'
         working-directory: backend
 
       - name: Run tests Backend

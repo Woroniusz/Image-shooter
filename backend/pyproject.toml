@@ -103,7 +103,7 @@ explicit = true
 [[tool.uv.index]]
 name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
-ecplicit = true
+explicit = true
 
 [[tool.uv.index]]
 name = "torchvision-cu117"

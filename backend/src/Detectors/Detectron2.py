@@ -92,7 +92,7 @@ class Detectron2(Detector):
 		# convert outputs to Detections object
 		detections: Detections = detectron2_to_supervision(outputs)
 
-		# filtre
+		# filter
 		detections_filtred: Detections = filter_detections(detections, self.cfg.Detectors.Detectron2.filters)
 
 		return detections_filtred

@@ -5,3 +5,5 @@ name = "Detectron2"
 [Detectors.Detectron2]
 cfg = "src/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml"
 weights = "src/zoo/detectron2/model.pt"
+filters = [ 2 ]  # Only detect cars
+

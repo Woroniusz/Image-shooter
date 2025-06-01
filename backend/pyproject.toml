@@ -20,6 +20,7 @@ dev = [
     "mypy>=1.16.0",
     "pytest>=8.3.5",
     "pytest-cov>=6.1.1",
+    "ruff>=0.11.12",
 ]
 
 cpu = [
@@ -69,11 +70,13 @@ strict_optional = true
 no_implicit_optional = true
 disallow_incomplete_defs = true
 
-
 [tool.pytest.ini_options]
-addopts = "-ra -q --tb=short --mypy --mypy-ignore-missing-imports --cov-report=term-missing --cov=backend"
+addopts = "-ra -q --tb=short --cov-report=term-missing --cov=src --cov-fail-under=70"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
+markers = [
+    "manual: Run only manual tests",
+]
 
 [tool.coverage.run]
 skip_empty = true

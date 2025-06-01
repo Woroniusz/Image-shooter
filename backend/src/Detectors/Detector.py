@@ -1,10 +1,11 @@
-import os
 from abc import ABC, abstractmethod
 
 import numpy as np
+import torch
 from supervision.detection.core import Detections
 
-from src.logger.logger import get_logger
+from src.Logger.logger import get_logger
+from src.utils.Config import Config
 
 logger = get_logger(__name__)
 
@@ -14,17 +15,13 @@ class Detector(ABC):
 	Abstract base class for detectors.
 	"""
 
-	def __init__(self, cfg: str):
+	def __init__(self, cfg: Config):
 		"""
 		Initialize the detector with configuration and weight files.
 		"""
 		# Init: check if cfg and weight files exist
-		if not os.path.exists(cfg):
-			logger.error(f'Configuration file {cfg} does not exist.')
-			raise FileNotFoundError(f'Configuration file {cfg} does not exist.')
-
-		self.cfg = cfg
-		self.weight = weight
+		self.cfg: Config = cfg
+		self.device: str = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 	@abstractmethod
 	def __call__(self, image: np.ndarray) -> Detections:

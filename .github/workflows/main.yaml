@@ -28,53 +28,31 @@ jobs:
       #============================================
       #             Backend Tests
       #============================================
-      - name: Zaktualizuj pip, setuptools i wheel
-        run: pip install --upgrade pip setuptools wheel
 
-      - name: Install the project part 2
-        run:  |
-            uv lock
-            uv sync --locked --all-extras --dev --group cpu --no-build-isolation
-            uv run pip install 'git+https://github.com/facebookresearch/detectron2.git'
+      - name: Install the project
+        run:  uv sync
         working-directory: backend
 
       - name: Run tests Backend
         working-directory: backend
         run: |
-          uv run pytest -m "not manual"
+          uv run --no-sync pytest -m "not manual"
+          uv run --no-sync mypy
+          uv run --no-sync ruff check . 
+          uv run --no-sync pyright
 
-      # Run mypy type checks
-      - name: Run mypy backend
-        working-directory: backend
-        run: |
-          uv run mypy
-
-      # Run ruff linting
-      - name: Run ruff backend
-        working-directory: backend
-        run: |
-          uv run ruff check . 
 
       #============================================
       #             Frontend Tests
       #============================================
       - name: Install the project
-        run: uv sync --locked --all-extras --dev --group cpu
+        run:  uv sync
         working-directory: frontend
 
-      - name: Run tests Fronetend
+      - name: Run tests frontend
         working-directory: frontend
         run: |
-          uv run pytest
-
-      # Run mypy type checks
-      - name: Run mypy Frontend
-        working-directory: frontend
-        run: |
-          uv run mypy
-
-      # Run ruff linting
-      - name: Run ruff Frontend
-        working-directory: frontend
-        run: |
-          uv run ruff check . 
+          uv run --no-sync pytest -m "not manual"
+          uv run --no-sync mypy
+          uv run --no-sync ruff check . 
+          uv run --no-sync pyright

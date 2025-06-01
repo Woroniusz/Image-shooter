@@ -12,7 +12,6 @@ dependencies = [
     "setuptools>=70.2.0",
     "supervision>=0.25.1",
     "toml>=0.10.2",
-    "detectron2",
 ]
 
 [dependency-groups]
@@ -21,6 +20,10 @@ dev = [
     "pytest>=8.3.5",
     "pytest-cov>=6.1.1",
     "ruff>=0.11.12",
+]
+
+detectron2 = [
+    "detectron2",
 ]
 
 cpu = [

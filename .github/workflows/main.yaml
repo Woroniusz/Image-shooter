@@ -30,14 +30,9 @@ jobs:
       #============================================
       - name: Install the project part 2
         run:  uv lock && \
-              uv sync --locked --all-extras --dev --group cpu --no-build-isolation
+              uv sync --locked --all-extras --dev --group cpu --no-build-isolation && \
+              uv run pip install 'git+https://github.com/facebookresearch/detectron2.git'
         working-directory: backend
-
-      - name: Install detectron2
-        run: |
-          uv run pip install 'git+https://github.com/facebookresearch/detectron2.git'
-          working-directory: backend
-
 
       - name: Run tests Backend
         working-directory: backend

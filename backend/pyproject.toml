@@ -3,9 +3,34 @@ name = "shooter-backend"
 version = "0.1.0"
 description = "Backend for the Shooter game"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+requires-python = "==3.11.*"
+dependencies = [
+    "detectron2",
+    "numpy<2.0",
+    "opencv-python>=4.11.0.86",
+    "pycocotools>=2.0.9",
+    "requests>=2.28.1",
+    "setuptools>=70.2.0",
+    "supervision>=0.25.1",
+    "toml>=0.10.2",
+]
 
+[dependency-groups]
+dev = [
+    "mypy>=1.16.0",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+    "ruff>=0.11.12",
+]
+
+cpu = [
+  "torch>=2.0.1",
+  "torchvision>=0.15.2",
+]
+gpu = [
+  "torch>=2.0.1",
+  "torchvision>=0.15.2",
+]
 
 [tool.ruff]
 line-length = 120
@@ -35,7 +60,7 @@ indent-style = "tab"
 docstring-code-format = true
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.11"
 ignore_missing_imports = true
 warn_return_any = true
 warn_unused_configs = true
@@ -45,11 +70,13 @@ strict_optional = true
 no_implicit_optional = true
 disallow_incomplete_defs = true
 
-
 [tool.pytest.ini_options]
-addopts = "-ra -q --tb=short --mypy --mypy-ignore-missing-imports --cov-report=term-missing --cov=backend"
+addopts = "-ra -q --tb=short --cov-report=term-missing --cov=src --cov-fail-under=70"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
+markers = [
+    "manual: Run only manual tests",
+]
 
 [tool.coverage.run]
 skip_empty = true
@@ -58,15 +85,39 @@ show_missing = true
 [tool.coverage.html]
 directory = "coverage_html_report"
 
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu117", marker = "extra == 'gpu' and extra != 'cpu'" },
+    { index = "pytorch-cpu", marker = "extra == 'gpu' and extra != 'gpu'" }
+]
+detectron2 = { git = "https://github.com/facebookresearch/detectron2.git" }
+torchvision = [
+    { index = "torchvision-cu117", marker = "extra == 'gpu' and extra != 'cpu'" },
+    { index = "torchvision-cpu", marker = "extra == 'cpu' and extra != 'gpu'" }
+]
+[[tool.uv.index]]
+name = "pytorch-cu117"
+url = "https://download.pytorch.org/whl/cu117"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "torchvision-cu117"
+url = "https://download.pytorch.org/whl/cu117"
+explicit = true
+
+[[tool.uv.index]]
+name = "torchvision-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[dependency-groups]
-dev = [
-    "mypy>=1.16.0",
-    "pytest>=8.3.5",
-    "pytest-cov>=6.1.1",
-]
 
 #set mark

@@ -1,0 +1,24 @@
+[general]
+app_name = "ImageShooter"
+version = "0.1.0"
+
+[detector]
+model_path = "zoo/detectron2/model.pt"
+config_path = "zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml"
+threshold = 0.5
+
+[logging]
+enable = true
+level = "DEBUG"
+
+[platform.linux]
+temp_dir = "/tmp/imageshooter"
+log_path = "/var/log/imageshooter.log"
+
+[platform.windows]
+temp_dir = "C:\\Temp\\ImageShooter"
+log_path = "C:\\logs\\imageshooter.log"
+
+[platform.macos]
+temp_dir = "/tmp/imageshooter"
+log_path = "/usr/local/var/log/imageshooter.log"

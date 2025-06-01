@@ -22,9 +22,6 @@ dev = [
     "ruff>=0.11.12",
 ]
 
-detectron2 = [
-    "detectron2",
-]
 
 cpu = [
   "torch>=2.0.1",
@@ -33,6 +30,12 @@ cpu = [
 gpu = [
   "torch>=2.0.1",
   "torchvision>=0.15.2",
+]
+
+[project.optional-dependencies]
+
+detectron2 = [
+    "detectron2",
 ]
 
 [tool.ruff]

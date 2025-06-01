@@ -28,6 +28,9 @@ jobs:
       #============================================
       #             Backend Tests
       #============================================
+      - name: Zaktualizuj pip, setuptools i wheel
+        run: pip install --upgrade pip setuptools wheel
+
       - name: Install the project part 2
         run:  |
             uv lock

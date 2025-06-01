@@ -5,7 +5,6 @@ description = "Backend for the Shooter game"
 readme = "README.md"
 requires-python = "==3.11.*"
 dependencies = [
-    "setuptools>=70.2.0",
     "numpy<2.0",
     "opencv-python>=4.11.0.86",
     "supervision>=0.25.1",
@@ -118,7 +117,8 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [build-system]
-requires = ["setuptools", 
+requires = [
+    "setuptools>=70.2.0",
     "wheel"]
 build-backend = "setuptools.build_meta"
 

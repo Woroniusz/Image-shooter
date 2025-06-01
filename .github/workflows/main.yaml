@@ -46,7 +46,7 @@ jobs:
       #             Frontend Tests
       #============================================
       - name: Install the project
-        run:  uv sync
+        run:  uv sync --no-build-isolation
         working-directory: frontend
 
       - name: Run tests frontend

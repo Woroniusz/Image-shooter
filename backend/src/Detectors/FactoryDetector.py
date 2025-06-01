@@ -13,7 +13,6 @@ class FactoryDetector:
 		"""
 		Create a detector instance based on the provided name and configuration.
 
-		:param detector_name: Name of the detector to create.
 		:param config: Configuration dictionary for the detector.
 		:return: An instance of the specified detector.
 		"""

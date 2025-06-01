@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 jobs:
   test:
     name: Test, Mypy & Ruff
@@ -21,16 +24,19 @@ jobs:
         with:
           version: "0.7.9"
 
-      - name: Install the project
-        run: uv sync --locked --all-extras --dev
 
       #============================================
       #             Backend Tests
       #============================================
+      - name: Install the project
+        run: uv sync --locked --all-extras --dev --group cpu
+        working-directory: backend
+
+
       - name: Run tests Backend
         working-directory: backend
         run: |
-          uv run pytest
+          uv run pytest -m "not manual"
 
       # Run mypy type checks
       - name: Run mypy backend
@@ -45,8 +51,12 @@ jobs:
           uv run ruff check . 
 
       #============================================
-      #             Backend Tests
+      #             Frontend Tests
       #============================================
+      - name: Install the project
+        run: uv sync --locked --all-extras --dev --group cpu
+        working-directory: frontend
+
       - name: Run tests Fronetend
         working-directory: frontend
         run: |

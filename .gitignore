@@ -172,3 +172,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+backend/coverage.xml
+backend/htmlcov/
+
+backend/src/zoo/detectron2/*.pt

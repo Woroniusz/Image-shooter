@@ -28,6 +28,12 @@ jobs:
       #============================================
       #             Backend Tests
       #============================================
+
+      - name: update pip
+        run: |
+          uv run python -m pip install --no-build-isolation --upgrade pip
+        working-directory: backend
+
       - name: Install the project
         run:  |
             uv sync --no-build-isolation

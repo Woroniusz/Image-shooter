@@ -123,8 +123,8 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [build-system]
-requires = ["pdm-backend >= 2.4.0"]
-build-backend = "pdm.backend"
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
 
 
 #set mark

@@ -34,26 +34,42 @@ jobs:
       #============================================
       #             Backend Tests
       #============================================
-      - name: Zainstaluj PyTorch (CPU-only)
+      # - name: Zainstaluj PyTorch (CPU-only)
+      #   run: |
+      #     pip install --upgrade pip setuptools wheel
+      #     pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+      #   working-directory: backend
+      #
+      # - name: Zainstaluj resztę zależności (w tym detectron2)
+      #   run: |
+      #     pip install -r requirements.txt --upgrade
+      #   working-directory: backend
+      - name: Prepare .venv for backend
+        working-directory: backend
         run: |
+          python -m venv .venv
+
+          source .venv/bin/activate
+          python -m ensurepip --upgrade || \
+            (curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && .venv/bin/python get-pip.py)
           pip install --upgrade pip setuptools wheel
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-        working-directory: backend
 
-      - name: Zainstaluj resztę zależności (w tym detectron2)
-        run: |
-          pip install -r requirements.txt --upgrade
+      - name: Run uv sync in backend
         working-directory: backend
+        run: |
+          source .venv/bin/activate
+          uv sync --no-build-isolation
 
       - name: Run tests Backend
+        working-directory: backend
         env:
           PYTHONPATH: ${{ github.workspace }}/backend/src
         run: |
-            pytest -m "not manual"
-            mypy
-            ruff check . 
-            pyright
-        working-directory: backend
+            uv run pytest -m "not manual"
+            uv run mypy .
+            uv run ruff check . 
+            uv run .pyright
 
 
       #============================================

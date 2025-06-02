@@ -191,8 +191,6 @@ dependencies = [
     { name = "termcolor" },
     { name = "tqdm" },
     { name = "yacs" },
-    { name = "torch"},
-    { name = "torchvision"},
 ]
 
 [[package]]
@@ -898,21 +896,22 @@ name = "shooter-backend"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "detectron2" },
     { name = "numpy" },
     { name = "opencv-python" },
     { name = "pycocotools" },
     { name = "requests" },
+    { name = "setuptools" },
     { name = "supervision" },
     { name = "toml" },
+    { name = "torch" },
+    { name = "torchvision" },
 ]
 
 [package.dev-dependencies]
 cpu = [
     { name = "torch" },
     { name = "torchvision" },
-]
-detectron2 = [
-    { name = "detectron2" },
 ]
 dev = [
     { name = "mypy" },
@@ -928,12 +927,19 @@ gpu = [
 
 [package.metadata]
 requires-dist = [
+    { name = "detectron2", git = "https://github.com/facebookresearch/detectron2.git" },
     { name = "numpy", specifier = "<2.0" },
     { name = "opencv-python", specifier = ">=4.11.0.86" },
     { name = "pycocotools", specifier = ">=2.0.9" },
     { name = "requests", specifier = ">=2.28.1" },
+    { name = "setuptools", specifier = ">=80.9.0" },
     { name = "supervision", specifier = ">=0.25.1" },
     { name = "toml", specifier = ">=0.10.2" },
+    { name = "torch", marker = "extra == 'cpu' or extra != 'gpu'", specifier = ">=2.0.1" },
+    { name = "torch", marker = "extra != 'cpu' and extra == 'gpu'", specifier = ">=2.0.1", index = "https://download.pytorch.org/whl/cu117" },
+    { name = "torchvision", marker = "extra != 'cpu' and extra == 'gpu'", specifier = ">=0.15.2", index = "https://download.pytorch.org/whl/cu117" },
+    { name = "torchvision", marker = "(extra == 'cpu' and extra == 'gpu') or (extra != 'cpu' and extra != 'gpu')", specifier = ">=0.15.2" },
+    { name = "torchvision", marker = "extra == 'cpu' and extra != 'gpu'", specifier = ">=0.15.2", index = "https://download.pytorch.org/whl/cpu" },
 ]
 
 [package.metadata.requires-dev]
@@ -944,7 +950,6 @@ cpu = [
     { name = "torchvision", marker = "(extra == 'cpu' and extra == 'gpu') or (extra != 'cpu' and extra != 'gpu')", specifier = ">=0.15.2" },
     { name = "torchvision", marker = "extra == 'cpu' and extra != 'gpu'", specifier = ">=0.15.2", index = "https://download.pytorch.org/whl/cpu" },
 ]
-detectron2 = [{ name = "detectron2", git = "https://github.com/facebookresearch/detectron2.git" }]
 dev = [
     { name = "mypy", specifier = ">=1.16.0" },
     { name = "pyright", specifier = ">=1.1.401" },

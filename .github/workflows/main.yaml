@@ -33,15 +33,14 @@ jobs:
       #============================================
       - name: Upgrade pip, setuptools and wheel
         run: |
+          cd backend
           uv run python -m pip install --upgrade pip setuptools wheel
 
       - name: Install the project
         run:  |
             uv sync --no-build-isolation
-        working-directory: backend
 
       - name: Run tests Backend
-        working-directory: backend
         run: |
           uv run --no-sync pytest -m "not manual"
           uv run --no-sync mypy

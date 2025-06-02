@@ -13,7 +13,6 @@ dependencies = [
     "torch>=2.0.1",
     "torchvision>=0.15.2",
     "setuptools>=80.9.0",
-    "detectron2",
 ]
 
 [dependency-groups]
@@ -100,7 +99,6 @@ torchvision = [
     { index = "torchvision-cu117", marker = "extra == 'gpu' and extra != 'cpu'" },
     { index = "torchvision-cpu", marker = "extra == 'cpu' and extra != 'gpu'" }
 ]
-detectron2 = { git = "https://github.com/facebookresearch/detectron2.git" }
 [[tool.uv.index]]
 name = "pytorch-cu117"
 url = "https://download.pytorch.org/whl/cu117"

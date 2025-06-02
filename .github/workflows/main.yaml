@@ -76,7 +76,7 @@ jobs:
             uv run pytest -m "not manual"
             uv run mypy .
             uv run ruff check . 
-            uv run .pyright
+            uv run pyright
 
 
       #============================================

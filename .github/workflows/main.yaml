@@ -38,7 +38,7 @@ jobs:
 
       - name: Install the project
         run:  |
-            uv sync --group cpu --no-build-isolation
+            uv sync
         working-directory: backend
 
       - name: Install dependencies

@@ -36,7 +36,7 @@ detectron2 = [
 ]
 
 [tool.uv]
-defaults_group = ["dev", "cpu"]
+default-groups = ["dev", "cpu"]
 
 [tool.ruff]
 line-length = 120

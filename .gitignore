@@ -176,4 +176,4 @@ cython_debug/
 backend/coverage.xml
 backend/htmlcov/
 
-backend/src/zoo/detectron2/*.pt
+backend/source_app/zoo/detectron2/*.pt

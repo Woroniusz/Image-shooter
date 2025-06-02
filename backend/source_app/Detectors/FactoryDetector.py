@@ -1,6 +1,6 @@
-from src.Detectors.Detector import Detector
-from src.Detectors.Detectron2 import Detectron2
-from src.utils.Config import Config
+from source_app.Detectors.Detector import Detector
+from source_app.Detectors.Detectron2 import Detectron2
+from source_app.utils.Config import Config
 
 
 class FactoryDetector:

@@ -5,10 +5,10 @@ from detectron2.engine import DefaultPredictor
 from detectron2.structures import Boxes, Instances
 from supervision.detection.core import Detections
 
-from src.Detectors.Detector import Detector
-from src.Detectors.Detectron2 import Detectron2, detectron2_to_supervision, filter_detections
-from src.Detectors.FactoryDetector import FactoryDetector
-from src.utils.Config import Config
+from source_app.Detectors.Detector import Detector
+from source_app.Detectors.Detectron2 import Detectron2, detectron2_to_supervision, filter_detections
+from source_app.Detectors.FactoryDetector import FactoryDetector
+from source_app.utils.Config import Config
 
 
 @pytest.fixture
@@ -22,8 +22,8 @@ def mock_config() -> Config:
 			'Detectors': {
 				'name': 'Detectron2',
 				'Detectron2': {
-					'cfg': 'src/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml',
-					'weights': 'src/zoo/detectron2/model.pt',
+					'cfg': 'source_app/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml',
+					'weights': 'source_app/zoo/detectron2/model.pt',
 					'filters': [2],
 				},
 			},

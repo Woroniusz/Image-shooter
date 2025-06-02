@@ -77,7 +77,7 @@ no_implicit_optional = true
 disallow_incomplete_defs = true
 
 [tool.pytest.ini_options]
-addopts = "-ra -q --tb=short --cov-report=term-missing --cov=src --cov-fail-under=70"
+addopts = "-ra -q --tb=short --cov-report=term-missing --cov=source_app --cov-fail-under=70"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 markers = [

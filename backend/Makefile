@@ -13,5 +13,5 @@ typecheck:
 	uv run mypy .
 
 tests:
-	uv run pytest -v --cov=src --cov-report=term-missing
+	uv run pytest -v --cov=source_app --cov-report=term-missing
 

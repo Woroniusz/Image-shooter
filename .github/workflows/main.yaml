@@ -42,16 +42,16 @@ jobs:
 
       - name: Zainstaluj resztę zależności (w tym detectron2)
         run: |
-          source .venv/bin/activate
           pip install -r requirements.txt --upgrade
         working-directory: backend
 
       - name: Run tests Backend
         run: |
-          uv run --no-sync pytest -m "not manual"
-          uv run --no-sync mypy
-          uv run --no-sync ruff check . 
-          uv run --no-sync pyright
+            pytest -m "not manual"
+            mypy
+            ruff check . 
+            pyright
+        working-directory: backend
 
 
       #============================================

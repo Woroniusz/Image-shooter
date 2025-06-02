@@ -66,6 +66,7 @@ jobs:
         env:
           PYTHONPATH: ${{ github.workspace }}/backend/src
         run: |
+            source .venv/bin/activate
             uv run pytest -m "not manual"
             uv run mypy .
             uv run ruff check . 

@@ -36,6 +36,7 @@ jobs:
       #============================================
       - name: Upgrade pip, setuptools and wheel
         run: |
+          uv pip install torch
           uv sync --locked --all-extras --dev
         working-directory: backend
 

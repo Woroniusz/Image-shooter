@@ -34,10 +34,17 @@ jobs:
       #============================================
       #             Backend Tests
       #============================================
-      - name: Upgrade pip, setuptools and wheel
+      - name: Zainstaluj PyTorch (CPU-only)
         run: |
-          uv pip install torch
-          uv pip install -r requirements.txt --upgrade
+          source .venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+        working-directory: backend
+
+      - name: Zainstaluj resztę zależności (w tym detectron2)
+        run: |
+          source .venv/bin/activate
+          pip install -r requirements.txt --upgrade
         working-directory: backend
 
       - name: Run tests Backend

@@ -35,6 +35,9 @@ gpu = [
 detectron2 = [
 ]
 
+[tool.uv]
+defaults_group = ["dev", "cpu"]
+
 [tool.ruff]
 line-length = 120
 

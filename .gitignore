@@ -177,3 +177,4 @@ backend/coverage.xml
 backend/htmlcov/
 
 backend/src/zoo/detectron2/*.pt
+backend/uv.lock

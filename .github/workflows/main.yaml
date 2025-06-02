@@ -46,6 +46,8 @@ jobs:
         working-directory: backend
 
       - name: Run tests Backend
+        env:
+          PYTHONPATH: ${{ github.workspace }}/backend/src
         run: |
             pytest -m "not manual"
             mypy

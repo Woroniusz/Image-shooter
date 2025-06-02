@@ -36,7 +36,8 @@ jobs:
       #============================================
       - name: Upgrade pip, setuptools and wheel
         run: |
-          uv pip install --no-build-isolation -r requirements.txt
+          uv pip install torch
+          uv pip install -r requirements.txt --upgrade
         working-directory: backend
 
       - name: Run tests Backend

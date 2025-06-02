@@ -11,6 +11,8 @@ dependencies = [
     "toml>=0.10.2",
     "pycocotools>=2.0.9",
     "requests>=2.28.1",
+  "torch>=2.0.1",
+  "torchvision>=0.15.2",
     "detectron2",
 ]
 

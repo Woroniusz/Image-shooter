@@ -33,6 +33,14 @@ jobs:
       #============================================
       #             Backend Tests
       #============================================
+      - name: Upgrade pip, setuptools and wheel
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+
+      - name: Install PDM (potrzebne do build-backend)
+        run: |
+          python -m pip install --upgrade pdm
+
       - name: Install the project
         run:  |
             uv sync --no-build-isolation

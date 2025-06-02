@@ -32,6 +32,7 @@ jobs:
       - name: Install the project
         run:  |
             uv sync
+            uv pip install --upgrade pip setuptools wheel
             uv pip install --no-build-isolation 'git+https://github.com/facebookresearch/detectron2.git'
         working-directory: backend
 

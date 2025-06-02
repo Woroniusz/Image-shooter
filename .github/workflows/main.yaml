@@ -61,6 +61,12 @@ jobs:
           source .venv/bin/activate
           uv sync --no-build-isolation
 
+      - name: Install backend in editable mode
+        working-directory: backend
+        run: |
+          source .venv/bin/activate
+          pip install -e .
+
       - name: Run tests Backend
         working-directory: backend
         env:

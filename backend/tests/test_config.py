@@ -4,7 +4,7 @@ from typing import Any
 import pytest
 from _pytest.monkeypatch import MonkeyPatch
 
-from src.utils.Config import Config, ConfigSection
+from source_app.utils.Config import Config, ConfigSection
 
 
 def test_configsection_getattr_and_getitem() -> None:

@@ -1,7 +1,6 @@
 [project]
 name = "shooter-backend"
 version = "0.1.0"
-description = "Backend for the Shooter game"
 readme = "README.md"
 requires-python = "==3.11.*"
 dependencies = [
@@ -11,6 +10,10 @@ dependencies = [
     "toml>=0.10.2",
     "pycocotools>=2.0.9",
     "requests>=2.28.1",
+    "torch>=2.0.1",
+    "torchvision>=0.15.2",
+    "setuptools>=80.9.0",
+    "detectron2",
 ]
 
 [dependency-groups]
@@ -32,8 +35,8 @@ gpu = [
   "torchvision>=0.15.2",
 ]
 
-detectron2 = [
-]
+[tool.uv]
+default-groups = ["dev", "cpu"]
 
 [tool.ruff]
 line-length = 120
@@ -74,7 +77,7 @@ no_implicit_optional = true
 disallow_incomplete_defs = true
 
 [tool.pytest.ini_options]
-addopts = "-ra -q --tb=short --cov-report=term-missing --cov=src --cov-fail-under=70"
+addopts = "-ra -q --tb=short --cov-report=term-missing --cov=source_app --cov-fail-under=70"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 markers = [
@@ -97,6 +100,7 @@ torchvision = [
     { index = "torchvision-cu117", marker = "extra == 'gpu' and extra != 'cpu'" },
     { index = "torchvision-cpu", marker = "extra == 'cpu' and extra != 'gpu'" }
 ]
+detectron2 = { git = "https://github.com/facebookresearch/detectron2.git" }
 [[tool.uv.index]]
 name = "pytorch-cu117"
 url = "https://download.pytorch.org/whl/cu117"
@@ -118,9 +122,7 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [build-system]
-requires = [
-    "setuptools>=70.2.0",
-    "wheel"]
+requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 

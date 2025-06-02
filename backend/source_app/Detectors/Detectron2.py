@@ -9,9 +9,9 @@ from detectron2.engine import DefaultPredictor
 from detectron2.structures import Instances
 from supervision.detection.core import Detections
 
-from src.Detectors.Detector import Detector
-from src.Logger.logger import get_logger
-from src.utils.Config import Config
+from source_app.Detectors.Detector import Detector
+from source_app.Logger.logger import get_logger
+from source_app.utils.Config import Config
 
 logger = get_logger(__name__)
 

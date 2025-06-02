@@ -4,8 +4,8 @@ import numpy as np
 import torch
 from supervision.detection.core import Detections
 
-from src.Logger.logger import get_logger
-from src.utils.Config import Config
+from source_app.Logger.logger import get_logger
+from source_app.utils.Config import Config
 
 logger = get_logger(__name__)
 

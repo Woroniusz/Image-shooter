@@ -45,6 +45,7 @@ jobs:
       - name: install detectron2
         run: |
           cd backend
+          source .venv/bin/activate
           uv run --no-sync pip install 'git+https://github.com/facebookresearch/detectron2.git'
       - name: Run tests Backend
         run: |

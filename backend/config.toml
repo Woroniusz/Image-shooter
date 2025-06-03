@@ -7,3 +7,9 @@ cfg = "source_app/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml"
 weights = "source_app/zoo/detectron2/model.pt"
 filters = [ 2 ]  # Only detect cars
 
+
+[api]
+title = "Shooter"
+version = "0.1.0"
+ip = "localhost"
+port = 5000

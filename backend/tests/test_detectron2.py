@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 import pytest
 import torch
@@ -142,3 +143,21 @@ def test_factory_detector_invalid() -> None:
 			}
 		)
 		FactoryDetector.create_detector(mock_config)
+
+
+def test_detection(mock_config: Config) -> None:
+	"""
+	Test the detection process with Detectron2.
+	"""
+
+	detector: Detector = FactoryDetector.create_detector(mock_config)
+
+	# Create a mock image
+	image = cv2.imread('tests/sample_image/image1.jpg')
+
+	# Perform detection
+	outputs: Detections = detector(image)
+
+	assert isinstance(outputs, Detections)
+	assert not outputs.is_empty()
+	assert len(outputs.xyxy) > 0

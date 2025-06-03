@@ -4,7 +4,7 @@ all: sync lint typecheck tests
 
 sync:
 	uv sync --group dev --group gpu
-	uv sync --group dev --group gpu --group detectron2
+	uv sync --group dev --group gpu
 
 lint:
 	uv run ruff check .

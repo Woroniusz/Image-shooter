@@ -4,6 +4,12 @@ name = "Detectron2"
 
 [Detectors.Detectron2]
 cfg = "source_app/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml"
-weights = "source_app/zoo/detectron2/model.pt"
+weights = "source_app/zoo/detectron2/mo2del.pt"
 filters = [ 2 ]  # Only detect cars
 
+
+[api]
+title = "Shooter"
+version = "0.1.0"
+ip = "localhost"
+port = 5000

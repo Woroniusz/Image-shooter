@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from fastapi import FastAPI
 
@@ -24,8 +26,9 @@ def create_app(config: Config) -> FastAPI:
 
 
 if __name__ == '__main__':
+	my_path = os.path.dirname(os.path.abspath(__file__))
 	try:
-		config = Config(path='config.yaml')
+		config = Config(path=f'{my_path}/../../config.toml')
 	except Exception as e:
 		logger.error(f'Error while loading configuration: {e}', exc_info=e)
 		exit(1)

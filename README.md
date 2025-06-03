@@ -1,6 +1,6 @@
 # BackEnd
  - [x] Detector
- - [ ] API
+ - [x] API
 
 # FrontEnd
  - [ ] Django

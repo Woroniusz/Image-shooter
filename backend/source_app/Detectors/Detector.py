@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 
 import numpy as np
-import torch
 from supervision.detection.core import Detections
 
 from source_app.Logger.logger import get_logger
@@ -21,7 +20,6 @@ class Detector(ABC):
 		"""
 		# Init: check if cfg and weight files exist
 		self.cfg: Config = cfg
-		self.device: str = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 	@abstractmethod
 	def __call__(self, image: np.ndarray) -> Detections:

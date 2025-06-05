@@ -7,6 +7,7 @@ from source_app.api.routers.routers_loader import ImageRouter
 from source_app.Logger.logger import get_logger
 from source_app.utils.Config import Config
 from fastapi.middleware.cors import CORSMiddleware
+from source_app.Detectors.FactoryDetector import FactoryDetector
 
 # from source_app.api.routers.dynamic_router import dynamic_router
 
@@ -29,8 +30,11 @@ def create_app(config: Config) -> FastAPI:
 		allow_headers=['*'],
 	)
 
+	# Inicjalizacja detektorów
+	detector = FactoryDetector.create_detector(config)
+
 	# Dodajemy ImageRouter
-	image_router: ImageRouter = ImageRouter(config)
+	image_router: ImageRouter = ImageRouter(config, detector=detector)
 	app.include_router(image_router.router)
 
 	return app

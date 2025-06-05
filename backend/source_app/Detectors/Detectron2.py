@@ -72,7 +72,7 @@ class Detectron2(Detector):
 			logger.error('Model weights not found. Please download the model weights.')
 			conf.MODEL.WEIGHTS = model_zoo.get_checkpoint_url('COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml')
 		conf.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5
-		conf.MODEL.DEVICE = self.device
+		conf.MODEL.DEVICE = cfg.Detectors.device
 
 		self.model = DefaultPredictor(conf)
 
@@ -91,7 +91,6 @@ class Detectron2(Detector):
 
 		# convert outputs to Detections object
 		detections: Detections = detectron2_to_supervision(outputs)
-
 		# filter
 		detections_filtred: Detections = filter_detections(detections, self.cfg.Detectors.Detectron2.filters)
 

@@ -13,3 +13,6 @@ title = "Shooter"
 version = "0.1.0"
 ip = "localhost"
 port = 5000
+
+[api.cors]
+allow_origins = ["http://127.0.0.1:8000"]

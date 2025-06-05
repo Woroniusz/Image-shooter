@@ -27,11 +27,12 @@ class ImageRouter:
 			raise HTTPException(status_code=400, detail='No content in the uploaded file')
 
 		image = np.frombuffer(contents, np.uint8)
-		image_code = cv2.imdecode(image, cv2.IMREAD_COLOR)
-		if image_code is None:
+		success, encoded = cv2.imencode('.jpg', image)
+		if not success:
 			raise HTTPException(status_code=400, detail='Failed to decode image')
 
-		buf = io.BytesIO(image_code.tobytes())
+		buf = io.BytesIO(encoded.tobytes())
+		buf.seek(0)
 
 		# Return the processed image as a StreamingResponse
 		return StreamingResponse(buf, media_type='image/jpeg')

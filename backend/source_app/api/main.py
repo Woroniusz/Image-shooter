@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from source_app.api.routers.routers_loader import ImageRouter
 from source_app.Logger.logger import get_logger
 from source_app.utils.Config import Config
+from fastapi.middleware.cors import CORSMiddleware
 
 # from source_app.api.routers.dynamic_router import dynamic_router
 
@@ -16,6 +17,16 @@ def create_app(config: Config) -> FastAPI:
 	app = FastAPI(
 		title=config.api.title,
 		version=config.api.version,
+	)
+
+	print(f'{config.api.cors.allow_origins=}')
+	# Ustawienia CORS
+	app.add_middleware(
+		CORSMiddleware,
+		allow_origins=config.api.cors.allow_origins,
+		allow_credentials=True,
+		allow_methods=['*'],
+		allow_headers=['*'],
 	)
 
 	# Dodajemy ImageRouter

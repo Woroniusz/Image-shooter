@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Frontend for the Shooter game"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "django>=5.2.2",
+    "requests>=2.32.3",
+]
 
 
 [tool.ruff]
@@ -47,8 +50,9 @@ disallow_incomplete_defs = true
 
 
 [tool.pytest.ini_options]
+DJANG_SETTINGS_MODULE = "shooter.settings"
 addopts = "-ra -q --tb=short --mypy --mypy-ignore-missing-imports --cov-report=term-missing --cov=backend"
-testpaths = ["tests"]
+testpaths = ["frontend/shooter/uploader/tests"]
 python_files = ["test_*.py"]
 
 [tool.coverage.run]
@@ -59,7 +63,7 @@ show_missing = true
 directory = "coverage_html_report"
 
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [dependency-groups]
@@ -67,6 +71,8 @@ dev = [
     "mypy>=1.16.0",
     "pytest>=8.3.5",
     "pytest-cov>=6.1.1",
+    "pytest-django>=4.11.1",
+    "isort>=6.0.1",
 ]
 
 #set mark

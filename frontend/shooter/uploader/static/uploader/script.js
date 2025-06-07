@@ -49,7 +49,7 @@ function uploadFile(file) {
         if (!response.ok) {
             throw new Error('Błąd przy wysyłaniu: ' + response.statusText);
         }
-        return response.blob();  // otrzymujemy binarny blob
+        return response.blob(); 
     })
     .then(blob => {
         const url = URL.createObjectURL(blob);

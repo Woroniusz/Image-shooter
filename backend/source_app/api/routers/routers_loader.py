@@ -5,10 +5,10 @@ import numpy as np
 from fastapi import APIRouter, HTTPException, UploadFile
 from fastapi.responses import StreamingResponse
 from supervision.detection.core import Detections
-from source_app.Detectors.Detector import Detector
-from source_app.utils.Drawer import draw_detections_with_count
 
+from source_app.Detectors.Detector import Detector
 from source_app.utils.Config import Config
+from source_app.utils.Drawer import draw_detections_with_count
 
 
 def resize_image(img: np.ndarray, max_dim: int = 65500) -> np.ndarray:
@@ -55,12 +55,12 @@ class ImageRouter:
 				result: Detections = self.detector(img)
 				img = draw_detections_with_count(img, result)
 			except Exception as e:
-				raise HTTPException(status_code=500, detail=f'Error during detection: {e}')
+				raise HTTPException(status_code=500, detail=f'Error during detection: {e}')  # noqa: B904
 
 		try:
 			success, encoded = cv2.imencode('.jpg', img)
 		except cv2.error as e:
-			raise HTTPException(status_code=500, detail=f'Failed to encode image: {e}')  # noqa: E261
+			raise HTTPException(status_code=500, detail=f'Failed to encode image: {e}')  # noqa: B904
 
 		if not success:
 			raise HTTPException(status_code=500, detail='Failed to encode image as JPEG')

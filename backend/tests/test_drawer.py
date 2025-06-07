@@ -31,6 +31,7 @@ def detector() -> Detector:
 			{
 				'Detectors': {
 					'name': 'Detectron2',
+					'device': 'cpu',
 					'Detectron2': {
 						'cfg': 'source_app/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml',
 						'weights': 'source_app/zoo/detectron2/model.pt',

@@ -9,6 +9,10 @@ dependencies = [
     "requests>=2.32.3",
 ]
 
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["shooter", "uploader"]
+
 
 [tool.ruff]
 line-length = 120
@@ -51,16 +55,9 @@ disallow_incomplete_defs = true
 
 [tool.pytest.ini_options]
 DJANG_SETTINGS_MODULE = "shooter.settings"
-addopts = "-ra -q --tb=short --mypy --mypy-ignore-missing-imports --cov-report=term-missing --cov=backend"
+addopts = "-ra -q --tb=short --mypy --mypy-ignore-missing-imports"
 testpaths = ["frontend/shooter/uploader/tests"]
 python_files = ["test_*.py"]
-
-[tool.coverage.run]
-skip_empty = true
-show_missing = true
-
-[tool.coverage.html]
-directory = "coverage_html_report"
 
 [build-system]
 requires = ["setuptools >= 77.0.3"]
@@ -73,6 +70,8 @@ dev = [
     "pytest-cov>=6.1.1",
     "pytest-django>=4.11.1",
     "isort>=6.0.1",
+    "selenium>=4.33.0",
+    "pytest-mypy>=1.0.1",
 ]
 
 #set mark

@@ -2,12 +2,12 @@ import os
 
 import uvicorn
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from source_app.api.routers.routers_loader import ImageRouter
+from source_app.Detectors.FactoryDetector import FactoryDetector
 from source_app.Logger.logger import get_logger
 from source_app.utils.Config import Config
-from fastapi.middleware.cors import CORSMiddleware
-from source_app.Detectors.FactoryDetector import FactoryDetector
 
 # from source_app.api.routers.dynamic_router import dynamic_router
 

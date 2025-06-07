@@ -18,6 +18,8 @@ dev = [
     "isort>=6.0.1",
     "selenium>=4.33.0",
     "pytest-mypy>=1.0.1",
+    "ruff>=0.11.13",
+    "pyright>=1.1.401",
 ]
 
 [tool.uv]

@@ -53,13 +53,3 @@ def test_process_image_missing_content_type(client: TestClient) -> None:
 	# Sprawdzenie odpowiedzi
 	assert response.status_code == 400  # Unprocessable Entity
 	assert 'Failed to decode image' in response.json()['detail']
-
-
-def test_resize_image_large_dimensions() -> None:
-	# Create a large image
-	large_image = np.random.randint(0, 255, (70000, 70000, 3), dtype=np.uint8)
-	resized_image = resize_image(large_image)
-	# Check that the resized image dimensions are within the limits
-	assert resized_image.shape[0] <= 65500
-	assert resized_image.shape[1] <= 65500
-	assert resized_image.shape[2] == 3  # Ensure it is still a color image

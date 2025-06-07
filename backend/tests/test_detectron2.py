@@ -22,6 +22,7 @@ def mock_config() -> Config:
 		{
 			'Detectors': {
 				'name': 'Detectron2',
+				'device': 'cpu',
 				'Detectron2': {
 					'cfg': 'source_app/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml',
 					'weights': 'source_app/zoo/detectron2/model.pt',
@@ -145,6 +146,7 @@ def test_factory_detector_invalid() -> None:
 		FactoryDetector.create_detector(mock_config)
 
 
+@pytest.mark.manul
 def test_detection(mock_config: Config) -> None:
 	"""
 	Test the detection process with Detectron2.

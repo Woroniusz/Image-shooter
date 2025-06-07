@@ -1,8 +1,9 @@
+import numpy as np
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from source_app.api.routers.routers_loader import ImageRouter
+from source_app.api.routers.routers_loader import ImageRouter, resize_image
 from source_app.utils.Config import Config
 
 
@@ -52,3 +53,17 @@ def test_process_image_missing_content_type(client: TestClient) -> None:
 	# Sprawdzenie odpowiedzi
 	assert response.status_code == 400  # Unprocessable Entity
 	assert 'Failed to decode image' in response.json()['detail']
+
+
+def test_resize_image() -> None:
+	# Create a dummy image (numpy array)
+	image = np.random.randint(0, 256, (100, 100, 3), dtype=np.uint8)
+
+	# Resize the image to 50x50
+	resized_image = resize_image(image, 50)
+
+	# Check the shape of the resized image
+	assert resized_image.shape == (50, 50, 3)
+
+	# Check that the resized image is of type uint8
+	assert resized_image.dtype == np.uint8

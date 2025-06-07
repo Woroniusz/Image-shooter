@@ -34,16 +34,6 @@ jobs:
       #============================================
       #             Backend Tests
       #============================================
-      # - name: Zainstaluj PyTorch (CPU-only)
-      #   run: |
-      #     pip install --upgrade pip setuptools wheel
-      #     pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-      #   working-directory: backend
-      #
-      # - name: Zainstaluj resztę zależności (w tym detectron2)
-      #   run: |
-      #     pip install -r requirements.txt --upgrade
-      #   working-directory: backend
       - name: Prepare .venv for backend
         working-directory: backend
         run: |
@@ -82,14 +72,16 @@ jobs:
       #============================================
       #             Frontend Tests
       #============================================
-      # - name: Install the project
-      #   run:  uv sync --no-build-isolation
-      #   working-directory: frontend
-      #
-      # - name: Run tests frontend
-      #   working-directory: frontend
-      #   run: |
-      #     uv run --no-sync pytest -m "not manual"
-      #     uv run --no-sync mypy
-      #     uv run --no-sync ruff check . 
-      #     uv run --no-sync pyright
+      - name: Install the project
+        run:  uv sync 
+        working-directory: frontend/shooter
+
+      - name: Run tests frontend
+        working-directory: frontend/shooter
+        run: |
+          source .venv/bin/activate
+          export DJANG_SETTINGS_MODULE=shooter.settings
+          uv run  pytest -m "not manual"
+          uv run  mypy .
+          uv run  ruff check . 
+          uv run  pyright

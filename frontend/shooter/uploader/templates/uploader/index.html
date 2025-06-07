@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Przeciągnij i upuść obraz</title>
+    <link rel="stylesheet" href="{% static 'uploader/style.css' %}">
+</head>
+<body>
+    <h2>Przeciągnij i upuść obraz poniżej</h2>
+    <div id="drop-area">
+        Upuść obraz tutaj
+    </div>
+    <img id="preview" src="" alt="Tutaj pojawi się przesłany obraz" />
+
+    <script src="{% static 'uploader/script.js' %}"></script>
+</body>
+</html>
+

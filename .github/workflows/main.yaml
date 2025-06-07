@@ -80,6 +80,7 @@ jobs:
         working-directory: frontend/shooter
         run: |
           source .venv/bin/activate
+          export DJANG_SETTINGS_MODULE=shooter.settings
           uv run  pytest -m "not manual"
           uv run  mypy
           uv run  ruff check . 

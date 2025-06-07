@@ -68,7 +68,7 @@ disallow_incomplete_defs = true
 
 
 [tool.pytest.ini_options]
-DJANG_SETTINGS_MODULE = "shooter.settings"
+DJANGO_SETTINGS_MODULE = "shooter.settings"
 addopts = "-ra -q --tb=short --mypy --mypy-ignore-missing-imports"
 testpaths = ["frontend/shooter/uploader/tests"]
 python_files = ["test_*.py"]

@@ -146,6 +146,7 @@ def test_factory_detector_invalid() -> None:
 		FactoryDetector.create_detector(mock_config)
 
 
+@pytest.mark.manul
 def test_detection(mock_config: Config) -> None:
 	"""
 	Test the detection process with Detectron2.

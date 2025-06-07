@@ -9,6 +9,20 @@ dependencies = [
     "requests>=2.32.3",
 ]
 
+[dependency-groups]
+dev = [
+    "mypy>=1.16.0",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+    "pytest-django>=4.11.1",
+    "isort>=6.0.1",
+    "selenium>=4.33.0",
+    "pytest-mypy>=1.0.1",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["shooter", "uploader"]
@@ -63,15 +77,5 @@ python_files = ["test_*.py"]
 requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
-[dependency-groups]
-dev = [
-    "mypy>=1.16.0",
-    "pytest>=8.3.5",
-    "pytest-cov>=6.1.1",
-    "pytest-django>=4.11.1",
-    "isort>=6.0.1",
-    "selenium>=4.33.0",
-    "pytest-mypy>=1.0.1",
-]
 
 #set mark

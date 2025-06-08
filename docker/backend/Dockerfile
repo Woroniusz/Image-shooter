@@ -22,9 +22,8 @@ WORKDIR /app
 
 RUN bash /script/pyproject_to_requirements.sh
 
-RUN pip install torch torchvision
-
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install torch torchvision \
+    && pip install --no-cache-dir -r requirements.txt
 
 ENV PYTHONPATH=/app
 

@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 # This script builds the Docker image for the backend service.
 
 # move dependice from pyproject to requirements.txt

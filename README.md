@@ -23,7 +23,7 @@ source .venv/bin/activate
 
 install torch and torchvision are required for the detectron2
 ```bash
-pip install torch torchvision
+uv run pip install torch torchvision
 ```
 
 install rest of the requirements

@@ -133,5 +133,8 @@ explicit = true
 requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
+[project.scripts]
+shooter = "source_app.api.main:main"
+
 
 #set mark

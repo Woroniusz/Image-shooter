@@ -40,7 +40,10 @@ def create_app(config: Config) -> FastAPI:
 	return app
 
 
-if __name__ == '__main__':
+def main() -> None:
+	"""
+	Main function to run the FastAPI application.
+	"""
 	my_path = os.path.dirname(os.path.abspath(__file__))
 	try:
 		config = Config(path=f'{my_path}/../../config.toml')
@@ -51,3 +54,7 @@ if __name__ == '__main__':
 	app = create_app(config)
 
 	uvicorn.run(app, host=config.api.ip, port=config.api.port, log_level='info')
+
+
+if __name__ == '__main__':
+	main()

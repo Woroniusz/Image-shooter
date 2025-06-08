@@ -6,14 +6,17 @@ device = "cpu"
 [Detectors.Detectron2]
 cfg = "source_app/zoo/detectron2/faster_rcnn_R_50_FPN_3x.yaml"
 weights = "source_app/zoo/detectron2/model.pt"
-filters = [ 2 ]  # Only detect cars
+filters = [ 2 ]  
 
 
 [api]
 title = "Shooter"
 version = "0.1.0"
-ip = "localhost"
+ip = "0.0.0.0"
 port = 5000
 
 [api.cors]
-allow_origins = ["http://127.0.0.1:8000"]
+allow_origins = ["http://127.0.0.1:8000",
+                 "http://0.0.0.0:8000",
+                "http://localhost:8000"
+                 ]
